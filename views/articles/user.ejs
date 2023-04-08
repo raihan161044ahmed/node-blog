@@ -1,0 +1,14 @@
+<%- include('header') -%>
+<div class="container bg-light">
+  <h1 class="mb-1"><%= article.title %></h1>
+  <div class="text-muted mb-2">Date:
+    <%= article.createdAt.toLocaleDateString() %>
+    <a href="https://www.facebook.com/" class="fa fa-facebook text-light"></a>
+    <a href="https://twitter.com/" class="fa fa-twitter text-light"></a>
+    <a
+      href="https://www.linkedin.com/feed/"
+      class="fa fa-linkedin text-light"
+    ></a>
+  </div>
+  <div class="mt-5"><%- article.description %></div>
+</div>

@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    /* background-image: url('/assets/background_png.png'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.center-div{
+    margin-top:10%;
+}
+.end-div{
+    display: flex;
+    justify-content: end;
+}
+
+.btn.btn-success{
+    padding: .4em 1em;
+}
+
+form{
+    padding: 0 3em;
+}
+
+#login .title > span{
+    font-size: .8em;
+}
+.table tr th:nth-child(2) {
+    min-width: 500px;
+  }
+
+  .fa {
+    padding: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    width: 50px;
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 5px;
+    margin-left: 5%;
+  }
+  
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+  .fa-linkedin {
+    background: #007bb5;
+    color: white;
+  }
+  .card{
+    margin-top: 10%;
+    margin-bottom: 5%;
+    width: 28rem;
+    border: 2px solid whitesmoke;
+  }
+  .card-title{
+    cursor: pointer;
+    padding: 25px;
+  }

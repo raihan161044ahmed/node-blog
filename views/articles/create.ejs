@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <title>Create Article</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="/static/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div class="container bg-light">
+      <h1 class="mb-4 mt-5">Create Article</h1>
+
+      <form action="/articles" method="POST">
+        <div class="form-group m-5 d-flex">
+          <label for="title">Title</label>
+          <input
+            required
+            value="<%= article.title %>"
+            type="text"
+            name="title"
+            id="title"
+            class="form-control ml-3"
+          />
+        </div>
+        <div id="example" class="container"  >
+          <script
+          type="text/javascript"
+          src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"
+          ></script>
+        </div>
+        <div id="description" class="container" >
+          <textarea id="froala-editor" name="description" value="<%=article.description %>"></textarea>
+        </div>
+        <script>
+          new FroalaEditor('textarea#froala-editor')
+            </script>
+          <a href="/articles/dashboard" class="btn btn-secondary ml-4 mt-3">Cancel</a>
+          <button type="submit" class="btn btn-primary mt-3">Save</button>
+        </div>
+        </form>
+  </body>
+</html>
