@@ -64,3 +64,9 @@ form{
     cursor: pointer;
     padding: 25px;
   }
+.card-img-top{
+  width: 55rem;
+  height: 23rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

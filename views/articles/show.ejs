@@ -1,8 +1,8 @@
 <%- include('header') -%>
-<div class="container bg-light">
+<div class="container bg-white mt-5">
   <h1 class="mb-1"><%= article.title %></h1>
-  <div class="text-muted mb-2">Date:
-    <%= article.createdAt.toLocaleDateString() %>
+  <div class="text-muted mb-2">
+    Date: <%= article.createdAt.toLocaleDateString() %>
     <a href="https://www.facebook.com/" class="fa fa-facebook text-light"></a>
     <a href="https://twitter.com/" class="fa fa-twitter text-light"></a>
     <a
@@ -12,5 +12,8 @@
   </div>
   <a href="/articles/dashboard" class="btn btn-secondary">All Articles</a>
   <a href="/articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
+  <div class="mt-5">
+    <img src="<%= article.image %>" alt="<%= article.title %>" class="card-img-top"/>
+  </div>
   <div class="mt-5"><%- article.description %></div>
 </div>

@@ -29,10 +29,10 @@ app.get('/dashboard', async (req, res) => {
 
 app.use(bodyparser.json());
 
-
 // load static assets
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')))
+app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')))
 
 app.use(session({
     secret: uuidv4(), //  '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
@@ -41,6 +41,7 @@ app.use(session({
 }));
 
 app.use('/articles', articleRouter)
+
 
 // home route
 app.get('/', async(req, res) => {
@@ -52,6 +53,5 @@ app.get('/', async(req, res) => {
     res.render('articles/base', { articles: articles })
   })
 
-  
 
-app.listen(3000, ()=>{ console.log("Lostening to the server on http://localhost:3000")});
+app.listen(3000, ()=>{ console.log("Listening to the server on http://localhost:3000")});

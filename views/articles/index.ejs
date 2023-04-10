@@ -1,12 +1,12 @@
 <%- include('header') -%>
-<div class="container">
+<div class="container bg-white">
     <% articles.forEach(article => { %>
   <% for (let i = 0; i < articles.length; i += 2) { %>
     <div class="row">
       <% for (let j = i; j < i + 2 && j < articles.length; j++) { %>
         <div class="col-md-6">
-          <div class="card" style="border-radius: 25px;">
-            <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+          <div class="card">
+            <img src="<%= article.image %>" alt="<%= article.title %>" class="img img-thumbnail"/>
             <div class="card-body">
               <h5 class="card-title"><a href="/articles/<%= article.slug %>"><%= articles[j].title %></a></h5>
             </div>

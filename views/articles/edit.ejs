@@ -25,7 +25,7 @@
     <div class="container bg-light">
       <h1 class="mb-4 mt-5">Edit Article</h1>
 
-      <form action="/articles/<%= article.id %>?_method=PUT" method="POST">
+      <form action="/articles/<%= article.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
         <div class="form-group m-5 d-flex">
           <label for="title">Title</label>
           <input
@@ -37,7 +37,10 @@
             class="form-control"
           />
         </div>
-        <div id="example" class="container"  >
+          <div class="mb-3">
+            <input type="file" name="image" class="form-control" value="<%= article.image %>" required>
+          </div>
+        <div id="example" class="container">
           <script
           type="text/javascript"
           src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"
@@ -46,13 +49,13 @@
         <div id="description" class="container" >
           <textarea id="froala-editor" name="description"><%= article.description %></textarea>
         </div>
-        <script>
-          new FroalaEditor('textarea#froala-editor')
-            </script>
           <a href="/articles/dashboard" class="btn btn-secondary ml-4 mt-3">Cancel</a>
           <button type="submit" class="btn btn-primary mt-3">Update</button>
         </div>
         </form>
+        <script>
+          new FroalaEditor('textarea#froala-editor')
+        </script>
     </div>
   </body>
 </html>

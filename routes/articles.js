@@ -1,13 +1,41 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+const path = require('path');
 const Article = require('../models/blog')
+const multer = require('multer');
 
 
-const app = express()
 
 const  credential = {
     email : "admin@gmail.com",
     password : "123"
+}
+
+// Multer configuration
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, 'public/uploads/');
+  },
+  filename: function(req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
+});
+const upload = multer({ storage: storage });
+
+// Check File Type
+function checkFileType(file, cb) {
+  // Allowed extensions
+  const filetypes = /jpeg|jpg|png|gif/;
+  // Check extension
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  // Check mime type
+  const mimetype = filetypes.test(file.mimetype);
+
+  if (extname && mimetype) {
+    return cb(null, true);
+  } else {
+    cb('Error: Images only!');
+  }
 }
 
 // login user
@@ -31,7 +59,7 @@ router.get('/dashboard', async(req, res) => {
     }
 });
 //create
-router.get('/create', (req, res) => {
+router.get('/create',(req, res) => {
     if(req.session.user){
         res.render('articles/create', {user : req.session.user, article: new Article() })
     }else{
@@ -47,15 +75,15 @@ router.get('/edit/:id', async (req, res) => {
       res.render('articles/base')
     }
   });
- 
+
  
   //save data
-  router.post('/', async (req, res, next) => {
+  router.post('/',upload.single('image'), async (req, res, next) => {
     req.article = new Article()
     next()
   }, saveArticleAndRedirect('show'));
   //Update
-  router.put('/:id', async (req, res, next) => {
+  router.put('/:id',upload.single('image'),async (req, res, next) => {
     req.article = await Article.findById(req.params.id)
     next()
   }, saveArticleAndRedirect('edit'));
@@ -70,6 +98,9 @@ router.get('/edit/:id', async (req, res) => {
       let article = req.article
       article.title = req.body.title
       article.description = req.body.description
+      if (req.file) {
+        article.image = '/uploads/' + req.file.filename;
+      }
       try {
         article = await article.save()
         res.redirect(`/articles/${article.slug}`)

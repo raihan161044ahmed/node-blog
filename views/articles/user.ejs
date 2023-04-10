@@ -1,5 +1,5 @@
 <%- include('header') -%>
-<div class="container bg-light">
+<div class="container bg-white mt-5">
   <h1 class="mb-1"><%= article.title %></h1>
   <div class="text-muted mb-2">Date:
     <%= article.createdAt.toLocaleDateString() %>
@@ -9,6 +9,9 @@
       href="https://www.linkedin.com/feed/"
       class="fa fa-linkedin text-light"
     ></a>
+  </div>
+  <div class="mt-5">
+    <img src="<%= article.image %>" alt="<%= article.title %>" class="card-img-top"/>
   </div>
   <div class="mt-5"><%- article.description %></div>
 </div>
